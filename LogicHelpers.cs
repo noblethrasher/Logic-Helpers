@@ -10,12 +10,7 @@ namespace Prelude
         public static Implication Implies(this bool p, bool q)
         {
             return new Implication (() => p, () => q);
-        }
-
-        public static IEnumerable<T> Neigborhood<T>(this Func<T, T, double> dist, T x, T y)
-        {
-            throw new NotImplementedException ();
-        }
+        }       
     }
 
     struct Implication

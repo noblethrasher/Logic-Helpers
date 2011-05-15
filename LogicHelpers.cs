@@ -24,19 +24,25 @@ namespace Prelude
             this.antecendent = Antecendent;
         }
 
+        public static bool _eval(Implication p)
+        {
+            return !p. antecedent () || p.consequent ();
+        }
+
+
         public static bool operator true(Implication p)
         {
-            return !p.antecendent () || p.consequent ();
+            return _eval(p);
         }
 
         public static bool operator false(Implication p)
         {
-            return !p.antecendent () || p.consequent ();
+            return _eval(p);
         }
 
         public static implicit operator bool(Implication p)
         {
-            return !p.antecendent () || p.consequent ();
+            return _eval(p);
         }
 
         public Implication Converse
@@ -64,19 +70,24 @@ namespace Prelude
             p = new Implication (Antecendent, Consequent);
         }
 
-        public static bool operator true(DoubleImplication _iff)
+        public static bool _eval(DoubleImplication _iff)
         {
             return _iff.p && _iff.p.Converse;
+        }
+
+        public static bool operator true(DoubleImplication _iff)
+        {
+            return _eval(_iff);
         }
 
         public static bool operator false(DoubleImplication _iff)
         {
-            return _iff.p && _iff.p.Converse;
+            return _eval(_iff);
         }
 
         public static implicit operator bool(DoubleImplication _iff)
         {
-            return _iff.p && _iff.p.Converse;
+            return _eval(_iff);
         }
     }
 }

@@ -15,13 +15,13 @@ namespace Prelude
 
     struct Implication
     {
-        public readonly Func<bool> consequent, antecendent;
+        public readonly Func<bool> consequent, antecedent;
 
-        public Implication(Func<bool> Antecendent, Func<bool> Consequent)
+        public Implication(Func<bool> Antecedent, Func<bool> Consequent)
             : this ()
         {
             this.consequent = Consequent;
-            this.antecendent = Antecendent;
+            this.antecendent = Antecedent;
         }
 
         public static bool _eval(Implication p)
@@ -49,13 +49,13 @@ namespace Prelude
         {
             get
             {
-                return new Implication (this.consequent, this.antecendent);
+                return new Implication (this.consequent, this.antecedent);
             }
         }
 
         public bool AndConversely()
         {
-            return new DoubleImplication (this.antecendent, this.consequent);
+            return new DoubleImplication (this.antecedent, this.consequent);
         }
     }
 
@@ -64,10 +64,10 @@ namespace Prelude
 
         Implication p;
 
-        public DoubleImplication(Func<bool> Consequent, Func<bool> Antecendent)
+        public DoubleImplication(Func<bool> Consequent, Func<bool> Antecedent)
             : this ()
         {
-            p = new Implication (Antecendent, Consequent);
+            p = new Implication (Antecedent, Consequent);
         }
 
         public static bool _eval(DoubleImplication _iff)
